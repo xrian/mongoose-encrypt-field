@@ -1,0 +1,16 @@
+defaultSeverity: error
+extends:
+  - tslint:recommended
+rules:
+  quotemark:
+    - true
+    - single
+    - jsx-double
+  no-console:
+    - true
+    - log
+  # object 的键是否需要排序
+  object-literal-sort-keys: false
+  # 不允许在行尾添加尾随空格。
+  no-trailing-whitespace:
+    - false
