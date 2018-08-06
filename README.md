@@ -1,9 +1,9 @@
 
-##安装
+## 安装
 ```
 npm i mongoose-encrypt-field --save
 ```
-##使用
+## 使用
 ```
 // 导入
 const encryptField = require(mongoose-encrypt-field).default;
@@ -22,14 +22,14 @@ const result = Model.encryption(str);
 const result = Model.decryption(str);
 ```
 
-##future
+## future
 - 全面测试
 - 实现内嵌schema,和更新操作时的加密解密
 - 补全文档
 - 数据迁移demo
 - 加密算法的安全性,时间复杂度和空间复杂度比较
 
-##说明
+## 说明
 想要对mongodb中的字段进行加密,保存到数据库中是不可识别状态,查询出来后是正常状态
 找了几个已有的库,发现都不能满足需求,于是就花两天时间写了一个,还只是初步状态,有bug发email到778811xxx@163.com或者提issue
 具体实现参考了以下几个库
