@@ -49,6 +49,7 @@ function plugin(schema, opt: IOptions) {
     return next();
   });
 
+  // TODO: 待测试
   schema.pre('findOneAndUpdate', function(next) {
     const plainTextValue = this._update.$set;
     if (plainTextValue) {
@@ -58,9 +59,8 @@ function plugin(schema, opt: IOptions) {
     return next();
   });
 
-  schema.method.encryption = () => {
-
-  };
+  schema.method.encryption = options.encrypt;
+  schema.method.decryption = options.decrypt;
 
 }
 

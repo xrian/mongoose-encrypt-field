@@ -44,6 +44,7 @@ function plugin(schema, opt) {
         hooks.update.run(this, options.encryptFields);
         return next();
     });
+    // TODO: 待测试
     schema.pre('findOneAndUpdate', function (next) {
         const plainTextValue = this._update.$set;
         if (plainTextValue) {
@@ -52,8 +53,8 @@ function plugin(schema, opt) {
         }
         return next();
     });
-    schema.method.encryption = () => {
-    };
+    schema.method.encryption = options.encrypt;
+    schema.method.decryption = options.decrypt;
 }
 exports.default = plugin;
 //# sourceMappingURL=plugin.js.map

@@ -1,11 +1,33 @@
 {
-  "name": "mongoose-sercet",
+  "name": "mongoose-encrypt-field",
   "version": "1.0.0",
-  "private": false,
+  "description": "mongoose field encrypt",
   "main": "index.js",
   "scripts": {
     "test": "npx mocha test"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xrian/mongoose-encrypt-field.git"
+  },
+  "keywords": [
+    "mongoose",
+    "encrypt",
+    "mongoose-plugin",
+    "security",
+    "crypto",
+    "mongodb",
+    "encryption"
+  ],
+  "author": {
+    "name": "xrian",
+    "email": "778811xxx@163.com"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/xrian/mongoose-encrypt-field/issues"
+  },
+  "homepage": "https://github.com/xrian/mongoose-encrypt-field#readme",
   "dependencies": {},
   "devDependencies": {
     "mocha": "^5.2.0",
