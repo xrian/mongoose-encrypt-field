@@ -31,7 +31,11 @@ export default abstract class BaseHooks {
           return;
         }
         if (typeof fields[item] === 'object') {
-          data[item] = this.encryptField(data[item], fields[item]);
+            if(Array.isArray(data[item])){
+                data[item].map((column) => this.encryptField(column, fields[item]));
+            }else{
+                data[item] = this.encryptField(data[item], fields[item]);
+            }
         } else {
           let field = data[item];
           if (Array.isArray(field)) {
@@ -66,7 +70,7 @@ export default abstract class BaseHooks {
         if (typeof fields[item] === 'object') {
           if (Array.isArray(data[item])) {
             data[item] = data[item].map((column) => {
-              return this.decryptField(data[column], fields[item]);
+              return this.decryptField(column, fields[item]);
             });
           } else {
             data[item] = this.decryptField(data[item], fields[item]);

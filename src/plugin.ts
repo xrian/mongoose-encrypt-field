@@ -21,14 +21,11 @@ function plugin(schema, opt: IOptions) {
     decrypt: options.decrypt,
   });
 
-  // schema.pre('init', function(data) {
-  //   return hooks.find.run(data, options.encryptFields);
-  // });
   // find
   schema.post('find', function(data, next) {
     try {
-      const array = data.map((doc)=> hooks.find.run(doc, options.encryptFields));
-      next(array);
+      const array = data.map((doc) => hooks.find.run(doc, options.encryptFields));
+      next();
     } catch (e) {
       console.error(e);
       throw e;
