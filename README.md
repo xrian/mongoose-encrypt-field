@@ -5,7 +5,10 @@ npm i mongoose-encrypt-field --save
 ```
 ##使用
 ```
-const encryptField = require(mongoose-encrypt-field);
+// 导入
+const encryptField = require(mongoose-encrypt-field).default;
+or
+import encryptField from 'mongoose-encrypt-field';
 // use
 UserSchema.plugin(encryptField, { fields: ['username', 'email'], secret: 'mysecret-key' })
 
