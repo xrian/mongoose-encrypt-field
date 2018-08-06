@@ -9,6 +9,8 @@ export default class UpdateHooks extends BaseHooks {
   }
 
   public run (schema, obj){
-    return this.encryptField(schema, obj);
+    const _doc = this.encryptField(schema, obj);
+    return schema._doc = _doc;
+
   }
 }

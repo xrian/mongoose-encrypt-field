@@ -18,16 +18,17 @@ function plugin(schema, opt: IOptions) {
 
   const hooks = generateHooks({
     encrypt: options.encrypt,
-    decrypt: options.encrypt,
+    decrypt: options.decrypt,
   });
 
   // schema.pre('init', function(data) {
   //   return hooks.find.run(data, options.encryptFields);
   // });
   // find
-  schema.post('find', function(next, data) {
+  schema.post('find', function(data, next) {
     try {
-      return hooks.find.run(data, options.encryptFields);
+      const array = data.map((doc)=> hooks.find.run(doc, options.encryptFields));
+      next(array);
     } catch (e) {
       console.error(e);
       throw e;

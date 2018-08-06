@@ -13,6 +13,9 @@ export default function f(schemaObj, obj) {
   if (encryptFields.length === 0) { // 如果没有填,则加密全部
     Object.keys(schemaObj)
       .forEach((item) => {
+        if(item==='_id' || item==='__v'){
+          return;
+        }
         if (schemaObj[item].constructor.name === 'Array') {
           encryptFieldsObj[item] = f(schemaObj[item][0], {});
         } else if (schemaObj[item].constructor.name === '‌Object') {
@@ -26,6 +29,9 @@ export default function f(schemaObj, obj) {
   } else {
     // TODO: 数组处理
     fieldsArr.forEach((item) => {
+      if(item==='_id' || item==='__v'){
+        return;
+      }
       /**
        * 如果 obj[item]不等于1,那么说明 schema 中对应的类型是内嵌,或者数组,或者对象
        */

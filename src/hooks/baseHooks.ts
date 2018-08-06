@@ -17,64 +17,73 @@ export default abstract class BaseHooks {
 
   /**
    * 加密字段
-   * @param model de model
+   * @param data de model
    * @param fields 需要加密的属性对象
    */
-  public encryptField(model, fields) {
+  public encryptField(schema, fields) {
+    let data = schema;
+    if(schema._doc){
+      data = schema._doc;
+    }
     Object.keys(fields)
       .forEach((item) => {
-        if(model[item]===undefined){
+        if(data[item]===undefined){
           return;
         }
         if (typeof fields[item] === 'object') {
-          model[item] = this.encryptField(model[item], fields[item]);
+          data[item] = this.encryptField(data[item], fields[item]);
         } else {
-          let field = model[item];
+          let field = data[item];
           if (Array.isArray(field)) {
-            model[item] = field.map((column) => this.encrypt(column));
+            data[item] = field.map((column) => this.encrypt(column));
           } else if (typeof field === 'string') {
-            model[item] = this.encrypt(field);
+            data[item] = this.encrypt(field);
           } else {
             field = JSON.stringify(field);
-            model[item] = this.encrypt(field);
+            data[item] = this.encrypt(field);
           }
         }
       });
-    return model;
+    return data;
   }
 
   /**
    * 解密字段
-   * @param model db model
+   * @param schema db data
    * @param fields 需要解密的属性对象
    */
-  public decryptField(model, fields) {
+  public decryptField(schema, fields) {
+    let data = schema;
+    if(schema._doc){
+      data = schema._doc;
+    }
     Object.keys(fields)
       .forEach((item) => {
-        if(model[item]===undefined){
+        if(data[item]===undefined){
           return;
         }
+        // TODO: 当字段是数组对象时,会报错
         if (typeof fields[item] === 'object') {
-          if (Array.isArray(model[item])) {
-            model[item] = model[item].map((column) => {
-              return this.decryptField(model[column], fields[item]);
+          if (Array.isArray(data[item])) {
+            data[item] = data[item].map((column) => {
+              return this.decryptField(data[column], fields[item]);
             });
           } else {
-            model[item] = this.decryptField(model[item], fields[item]);
+            data[item] = this.decryptField(data[item], fields[item]);
           }
         } else {
-          let field = model[item];
+          let field = data[item];
           if (Array.isArray(field)) {
-            model[item] = field.map((column) => this.decrypt(column));
+            data[item] = field.map((column) => this.decrypt(column));
           } else if (typeof field === 'string') {
-            model[item] = this.decrypt(field);
+            data[item] = this.decrypt(field);
           } else {
             field = this.decrypt(field);
-            model[item] = JSON.parse(field);
+            data[item] = JSON.parse(field);
           }
         }
       });
-    return model;
+    return data;
   }
 
 }

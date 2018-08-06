@@ -9,6 +9,8 @@ export default class FindOneHooks extends BaseHooks {
   }
 
   public run (schema, obj){
-    return this.decryptField(schema, obj);
+    const _doc = this.decryptField(schema, obj);
+    return schema._doc = _doc;
+
   }
 }
