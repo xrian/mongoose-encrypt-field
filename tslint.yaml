@@ -14,3 +14,9 @@ rules:
   # 不允许在行尾添加尾随空格。
   no-trailing-whitespace:
     - false
+  variable-name:
+    - true
+    - check-format
+    - allow-leading-underscore
+    - ban-keywords
+
