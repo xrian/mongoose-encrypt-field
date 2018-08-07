@@ -9,6 +9,7 @@ npm i mongoose-encrypt-field --save
 - model.create() 对插入记录加密
 - model.update() 对修改内容加密
 - model.findOne() 对查询结果解密
+- model.findOneAndUpdate() 对修改内容加密，对查询结果解密
 
 ## 使用
 ```
@@ -36,8 +37,9 @@ const result = Model.decryption(str);
   我并未对全部数据类型做测试，但是，如果对date类型的字段加密，查询结果是不会显示该字段的。
 
 ## future
+- 更新操作时的加密 v1.0.1
 - 全面测试
-- 实现内嵌schema,和更新操作时的加密解密
+- 实现内嵌schema加密解密
 - 补全文档
 - 数据迁移demo
 - 加密算法的安全性,时间复杂度和空间复杂度比较
