@@ -3,15 +3,16 @@
  */
 export default abstract class BaseHooks {
   constructor({
-    encrypt,
-    decrypt,
-  }: {
+                encrypt,
+                decrypt,
+              }: {
     encrypt: (str: string) => string,
     decrypt: (str: string) => string,
   }) {
     this.encrypt = encrypt;
     this.decrypt = decrypt;
   }
+
   public encrypt: (str: string) => string;
   public decrypt: (str: string) => string;
 
@@ -22,20 +23,20 @@ export default abstract class BaseHooks {
    */
   public encryptField(schema, fields) {
     let data = schema;
-    if(schema._doc){
+    if (schema._doc) {
       data = schema._doc;
     }
     Object.keys(fields)
       .forEach((item) => {
-        if(data[item]===undefined){
+        if (data[item] === undefined) {
           return;
         }
         if (typeof fields[item] === 'object') {
-            if(Array.isArray(data[item])){
-                data[item].map((column) => this.encryptField(column, fields[item]));
-            }else{
-                data[item] = this.encryptField(data[item], fields[item]);
-            }
+          if (Array.isArray(data[item])) {
+            data[item].map((column) => this.encryptField(column, fields[item]));
+          } else {
+            data[item] = this.encryptField(data[item], fields[item]);
+          }
         } else {
           let field = data[item];
           if (Array.isArray(field)) {
@@ -58,12 +59,12 @@ export default abstract class BaseHooks {
    */
   public decryptField(schema, fields) {
     let data = schema;
-    if(schema._doc){
+    if (schema._doc) {
       data = schema._doc;
     }
     Object.keys(fields)
       .forEach((item) => {
-        if(data[item]===undefined){
+        if (data[item] === undefined) {
           return;
         }
         // TODO: 当字段是数组对象时,会报错

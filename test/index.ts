@@ -17,7 +17,7 @@ const Post = new Schema({
     references: {
         link: String,
         author: String,
-        date: Date,
+        date: String,
     },
     updateTime: [
         {
@@ -37,8 +37,7 @@ const model = db.model('post', Post, 'post');
 
 // model.create({
 //     title: '哦呢啊手机打开拉丝机老地方',
-//     message: moment()
-//         .format('YYYY_MM_DD HH:mm:ss:SSS'),
+//     message: new Date().toString(),
 //     references: {
 //         author: 'zhangsan',
 //         date: new Date(),
@@ -56,8 +55,20 @@ const model = db.model('post', Post, 'post');
 //         console.error(e);
 //     });
 
-model.find({}).then((result)=> {
+model.findOneAndUpdate({}, {$set: {'references.author': 'wangwu'}}).then((result)=> {
   console.log(JSON.stringify(result));
 }).catch((e)=> {
   console.error(e);
 });
+
+// model.update({"_id" : "5b68a447010c9224107a265f"}, {$set: {  "message": '1231231233452345345' }}).then((result)=> {
+//   console.log(JSON.stringify(result));
+// }).catch((e)=> {
+//   console.error(e);
+// });
+
+// model.find({}).then((result)=> {
+//   console.log(JSON.stringify(result));
+// }).catch((e)=> {
+//   console.error(e);
+// });

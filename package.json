@@ -28,8 +28,11 @@
     "url": "https://github.com/xrian/mongoose-encrypt-field/issues"
   },
   "homepage": "https://github.com/xrian/mongoose-encrypt-field#readme",
-  "dependencies": {},
+  "dependencies": {
+    "@types/node": "^10.5.7"
+  },
   "devDependencies": {
+    "@types/mocha": "^5.2.5",
     "mocha": "^5.2.0",
     "mongoose": "^5.2.7",
     "ts-node": "^7.0.0",

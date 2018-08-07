@@ -2,7 +2,7 @@
  * 将 string 转换为 object
  * Created by zhangsong on 2018/8/4.
  */
-export default function(str: string, obj: {} = {}): object {
+export default function (str: string, obj: {} = {}): object {
   if (!str) {
     return obj;
   }

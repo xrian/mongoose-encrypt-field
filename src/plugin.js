@@ -36,22 +36,32 @@ function plugin(schema, opt) {
             throw e;
         }
     });
+    // create
     schema.pre('save', function (next) {
         hooks.save.run(this, options.encryptFields);
         return next();
     });
+    // update
     schema.pre('update', function (next) {
-        hooks.update.run(this, options.encryptFields);
+        const plainTextValue = this._update.$set;
+        hooks.update.run(plainTextValue, options.encryptFields);
         return next();
     });
-    // TODO: 待测试
+    // 保存到数据库前加密
     schema.pre('findOneAndUpdate', function (next) {
         const plainTextValue = this._update.$set;
-        if (plainTextValue) {
-            const updateObj = { $set: hooks.save.run(plainTextValue, options.encryptFields) };
-            this.update({}, updateObj);
-        }
+        hooks.update.run(plainTextValue, options.encryptFields);
         return next();
+    });
+    // 查询出结果后解密
+    schema.post('findOneAndUpdate', function (data) {
+        try {
+            return hooks.findOne.run(data, options.encryptFields);
+        }
+        catch (e) {
+            console.error(e);
+            throw e;
+        }
     });
     schema.method.encryption = options.encrypt;
     schema.method.decryption = options.decrypt;

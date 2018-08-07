@@ -3,6 +3,13 @@
 ```
 npm i mongoose-encrypt-field --save
 ```
+
+## 已实现
+- model.find() 对查询结果解密
+- model.create() 对插入记录加密
+- model.update() 对修改内容加密
+- model.findOne() 对查询结果解密
+
 ## 使用
 ```
 // 导入
@@ -25,6 +32,8 @@ const result = Model.decryption(str);
 ## 注意
 1. 因为MongoDB查询语句很灵活,**所以对于Mongoose的查询条件,没有做加密处理**,如果需要查询加密字段,请调用model.encryption()方法手动加密查询字段,将返回值作为查询条件
 2. 如果需要加密全部字段,fields传[]或者{}
+3. ***如果某个字段需要加密，请在定义schema的时候，将该字段类型设置为string。如果设置为其他类型，可能会出现类型不匹配，查询结果不显示的情况*** \
+  我并未对全部数据类型做测试，但是，如果对date类型的字段加密，查询结果是不会显示该字段的。
 
 ## future
 - 全面测试

@@ -27,10 +27,10 @@ export default class Options {
       throw new Error('Either the secret exists or the encrypt function exists');
     }
     if (option.crypt.secret) {
-      this.encrypt = function(str) {
+      this.encrypt = function (str) {
         return encryption.encrypt(str, option.crypt.secret);
       };
-      this.decrypt = function(str) {
+      this.decrypt = function (str) {
         return encryption.decrypt(str, option.crypt.secret);
       };
     } else {

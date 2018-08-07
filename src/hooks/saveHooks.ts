@@ -4,12 +4,12 @@
 import BaseHooks from './baseHooks';
 
 export default class SaveHooks extends BaseHooks {
-  constructor(prop){
+  constructor(prop) {
     super(prop);
   }
 
-  public run (schema, obj){
-    const _doc =  this.encryptField(schema, obj);
+  public run(schema, obj) {
+    const _doc = this.encryptField(schema, obj);
     return schema._doc = _doc;
 
   }

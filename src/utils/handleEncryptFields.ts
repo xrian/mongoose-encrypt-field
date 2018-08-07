@@ -13,7 +13,7 @@ export default function f(schemaObj, obj) {
   if (encryptFields.length === 0) { // 如果没有填,则加密全部
     Object.keys(schemaObj)
       .forEach((item) => {
-        if(item==='_id' || item==='__v'){
+        if (item === '_id' || item === '__v') {
           return;
         }
         if (schemaObj[item].constructor.name === 'Array') {
@@ -29,7 +29,7 @@ export default function f(schemaObj, obj) {
   } else {
     // TODO: 数组处理
     fieldsArr.forEach((item) => {
-      if(item==='_id' || item==='__v'){
+      if (item === '_id' || item === '__v') {
         return;
       }
       /**
@@ -41,11 +41,11 @@ export default function f(schemaObj, obj) {
         } else {
           encryptFieldsObj[item] = 1;
         }
-      } else if(Array.isArray(schemaObj[item])){
+      } else if (Array.isArray(schemaObj[item])) {
         const schemaField = schemaObj[item][0];
-        if(schemaObj[item].constructor.name==='Function'){
+        if (schemaObj[item].constructor.name === 'Function') {
           encryptFieldsObj[item] = 1;
-        }else{
+        } else {
           encryptFieldsObj[item] = f(schemaField, obj[item]);
         }
       } else if (schemaObj[item].constructor.name === '‌Object' && schemaObj[item]) {

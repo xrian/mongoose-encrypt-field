@@ -4,13 +4,15 @@
 import BaseHooks from './baseHooks.js';
 
 export default class FindOneHooks extends BaseHooks {
-  constructor(prop){
+  constructor(prop) {
     super(prop);
   }
 
-  public run (schema, obj){
-    const _doc = this.decryptField(schema, obj);
-    return schema._doc = _doc;
-
+  public run(schema, obj) {
+    if (schema) {
+      const _doc = this.decryptField(schema, obj);
+      return schema._doc = _doc;
+    }
+    return schema;
   }
 }

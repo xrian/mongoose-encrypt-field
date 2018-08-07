@@ -4,11 +4,11 @@
 import BaseHooks from './baseHooks';
 
 export default class InitHooks extends BaseHooks {
-  constructor(prop){
+  constructor(prop) {
     super(prop);
   }
 
-  public run (schema, obj){
+  public run(schema, obj) {
     return this.decryptField(schema, obj);
   }
 }
