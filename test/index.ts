@@ -30,7 +30,7 @@ const Post = new Schema({
 
 Post.plugin(mongoosePlugin, {
     fields: ['message', 'references', 'tips', 'updateTime.author'],
-    crypt: {secret: 'this is secret'},
+    secret: 'this is secret',
 });
 
 const model = db.model('post', Post, 'post');

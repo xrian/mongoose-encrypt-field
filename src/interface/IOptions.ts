@@ -10,11 +10,8 @@ export default interface IOptions {
   fields: string | string[] | object; // 需要加密的字段,如果需要全部加密,传[]或者{}
   excludeFields?: string | string[] | object; // 不需要加密的字段
   _StartExclude?: boolean;
-  crypt?: {
-    secret?: string; // 密钥
-    encrypt?: (str) => string; // 加密函数
-    decrypt?: (str) => string; // 解密函数
-    encryption?: IEncryption;
-  };
-
+  secret?: string; // 密钥
+  encrypt?: (str) => string; // 加密函数
+  decrypt?: (str) => string; // 解密函数
+  encryption?: IEncryption;
 }

@@ -15,24 +15,24 @@ class Options {
         if (!option.fields) {
             throw new Error('Boolean(option.fields) === false');
         }
-        if (!option.crypt.secret && (!option.crypt.encrypt || !option.crypt.decrypt)) {
+        if (!option.secret && (!option.encrypt || !option.decrypt)) {
             throw new Error('Either the secret exists or the encrypt function exists');
         }
-        if (option.crypt.secret) {
+        if (option.secret) {
             this.encrypt = function (str) {
-                return encryption.encrypt(str, option.crypt.secret);
+                return encryption.encrypt(str, option.secret);
             };
             this.decrypt = function (str) {
-                return encryption.decrypt(str, option.crypt.secret);
+                return encryption.decrypt(str, option.secret);
             };
         }
         else {
-            this.encrypt = option.crypt.encrypt;
-            this.decrypt = option.crypt.decrypt;
+            this.encrypt = option.encrypt;
+            this.decrypt = option.decrypt;
         }
         // 也可以通过传入 IEncryption 类型的 object 实现自定义加密
-        if (option.crypt.encryption) {
-            encryption = option.crypt.encryption;
+        if (option.encryption) {
+            encryption = option.encryption;
         }
         // 处理不同的 excludeFields 类型
         if (option.excludeFields) {

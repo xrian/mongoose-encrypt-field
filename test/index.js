@@ -29,7 +29,7 @@ const Post = new mongoose_1.Schema({
 });
 Post.plugin(plugin_1.default, {
     fields: ['message', 'references', 'tips', 'updateTime.author'],
-    crypt: { secret: 'this is secret' },
+    secret: 'this is secret',
 });
 const model = db_js_1.default.model('post', Post, 'post');
 // model.create({

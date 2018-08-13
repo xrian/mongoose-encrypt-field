@@ -28,7 +28,7 @@ const encryptField = require(mongoose-encrypt-field).default;
 or
 import encryptField from 'mongoose-encrypt-field';
 // use
-UserSchema.plugin(encryptField, { fields: ['username', 'email'], crypt: {secret: 'this is secret'}, })
+UserSchema.plugin(encryptField, { fields: ['username', 'email'], secret: 'this is secret'},)
 
 
 Model.find()
