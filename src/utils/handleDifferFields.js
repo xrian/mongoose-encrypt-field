@@ -13,8 +13,11 @@ function handleDifferFields(a, b) {
             if (a[item] === 1) {
                 a[item] = {};
             }
-            if (typeof a[item] === 'object') {
+            else if (typeof a[item] === 'object') {
                 a[item] = handleDifferFields(a[item], b[item]); // 递归
+            }
+            else {
+                a[item] = 0;
             }
         }
         else if (b[item] === 1) {

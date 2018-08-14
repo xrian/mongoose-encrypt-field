@@ -9,8 +9,11 @@ class FindHooks extends baseHooks_js_1.default {
         super(prop);
     }
     run(schema, obj) {
-        const _doc = this.decryptField(schema, obj);
-        return schema._doc = _doc;
+        if (schema) {
+            const _doc = this.decryptField(schema, obj);
+            return schema._doc = _doc;
+        }
+        return schema;
     }
 }
 exports.default = FindHooks;

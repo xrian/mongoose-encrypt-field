@@ -29,7 +29,7 @@ function plugin(schema, opt) {
     // findOne
     schema.post('findOne', function (data) {
         try {
-            return hooks.findOne.run(data, options.encryptFields);
+            return hooks.find.run(data, options.encryptFields);
         }
         catch (e) {
             console.error(e);
@@ -56,7 +56,7 @@ function plugin(schema, opt) {
     // 查询出结果后解密
     schema.post('findOneAndUpdate', function (data) {
         try {
-            return hooks.findOne.run(data, options.encryptFields);
+            return hooks.find.run(data, options.encryptFields);
         }
         catch (e) {
             console.error(e);

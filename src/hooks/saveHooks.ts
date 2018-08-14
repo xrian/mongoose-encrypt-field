@@ -11,6 +11,5 @@ export default class SaveHooks extends BaseHooks {
   public run(schema, obj) {
     const _doc = this.encryptField(schema, obj);
     return schema._doc = _doc;
-
   }
 }
