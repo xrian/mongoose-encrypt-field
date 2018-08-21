@@ -22,7 +22,7 @@ export default function f(schemaObj, obj) {
           encryptFieldsObj[item] = f(schemaObj[item], {});
         } else if (schemaObj[item].constructor.name === '‌Schema') {
           encryptFieldsObj[item] = f(schemaObj[item].obj, {});
-        } else if (schemaObj[item] === 1) {
+        } else if (schemaObj[item].constructor.name === 'Function') {
           encryptFieldsObj[item] = 1;
         }
       });

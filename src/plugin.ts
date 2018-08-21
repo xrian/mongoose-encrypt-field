@@ -67,8 +67,8 @@ function plugin(schema, opt: IOptions) {
     }
   });
 
-  schema.method.encryption = options.encrypt;
-  schema.method.decryption = options.decrypt;
+  schema.statics.encryption = options.encrypt;
+  schema.statics.decryption = options.decrypt;
 
 }
 

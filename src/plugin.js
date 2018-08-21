@@ -63,8 +63,8 @@ function plugin(schema, opt) {
             throw e;
         }
     });
-    schema.method.encryption = options.encrypt;
-    schema.method.decryption = options.decrypt;
+    schema.statics.encryption = options.encrypt;
+    schema.statics.decryption = options.decrypt;
 }
 exports.default = plugin;
 //# sourceMappingURL=plugin.js.map
