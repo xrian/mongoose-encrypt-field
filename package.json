@@ -1,6 +1,6 @@
 {
   "name": "mongoose-encrypt-field",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "mongoose field encrypt",
   "main": "index.js",
   "scripts": {
