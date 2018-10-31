@@ -1,3 +1,5 @@
+截至目前2018-10-31 因为公司在未来的版本中,并不打算继续使用mongodb,所以,该库应该也不会在维护了.不过,如果想要实现加解密效果,可以参考该库的实现方式.至少,思路是对的
+
 ## 简介
 Mongoose的插件,在保存数据库前(before save)对所需字段进行加密,在查询出数据后(query after)对数据进行解密.
 
@@ -49,7 +51,7 @@ const result = Model.decryption(str);
 
 ## 说明
 想要对mongodb中的字段进行加密,保存到数据库中是不可识别状态,查询出来后是正常状态
-找了几个已有的库,发现都不能满足需求,于是就花两天时间写了一个,有bug发email到778811xxx@163.com或者提issue \
+找了几个已有的库,发现都不能满足需求,于是就花两天时间写了一个 \
 具体实现参考了以下几个库 \
 [mongoose-encryption](https://github.com/joegoldbeck/mongoose-encryption) \
 [mongoose-field-encryption](https://github.com/victorparmar/mongoose-field-encryption) \
